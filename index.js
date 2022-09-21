@@ -78,4 +78,7 @@ const populateForm = ({ streetLineWithSecondary, city, state, zipcode }) => {
   document.getElementById("state").value = state;
   document.getElementById("zipcode").value = zipcode;
   Qualtrics.SurveyEngine.setEmbeddedData("addressEmbeddedData", document.getElementById("address").value);
+  Qualtrics.SurveyEngine.setEmbeddedData("cityEmbeddedData", document.getElementById("city").value);
+  Qualtrics.SurveyEngine.setEmbeddedData("stateEmbeddedData", document.getElementById("state").value);
+  Qualtrics.SurveyEngine.setEmbeddedData("zipCodeEmbeddedData", document.getElementById("zipcode").value);
 };

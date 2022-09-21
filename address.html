@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        background: url("https://www.smarty.com/img/brand/assets/smarty-logo-main.svg")
+        no-repeat center 10px;
+        background-size: 175px 49px;
+    }
+
+    body,
+    input {
+        font-family: sans-serif;
+        font-size: 20px;
+    }
+
+    h1 {
+        margin-top: 90px;
+        font-size: 28px;
+        text-align: center;
+        color: #707070;
+        font-weight: normal;
+    }
+
+    input {
+        width: 400px;
+        margin-bottom: 10px;
+        border: 2px solid #e0e0e0;
+        padding: 10px;
+    }
+
+    form {
+        margin: 75px auto 0;
+        padding: 30px;
+        background-color: #f1f7fb;
+        border-radius: 10px;
+        width: fit-content;
+    }
+
+    div {
+        margin: 2px;
+    }
+
+    label {
+        color: #39f;
+    }
+
+    .active {
+        display: block;
+    }
+
+    .inactive {
+        display: none;
+    }
+
+    #suggestionContainer {
+        position: relative;
+    }
+
+    #suggestionBox {
+        position: absolute;
+        top: -10px;
+        left: -3px;
+        border: solid 2px #e0e0e0;
+        background-color: #fff;
+        width: 500px;
+        height: 200px;
+        overflow-y: scroll;
+        cursor: pointer;
+    }
+
+    #suggestionBox div {
+        padding: 10px;
+    }
+
+    #suggestionBox div:hover {
+        background-color: #06c;
+        color: #fff;
+    }
+
+</style>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sandbox</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+<h1>US Address Autocomplete - API Demo</h1>
+<form>
+    <label>Address:</label>
+    <div>
+        <input type="text" id="address" value="" autocomplete="smarty" />
+    </div>
+    <div id="suggestionContainer">
+        <div id="suggestionBox" class="inactive"></div>
+    </div>
+    <label>City:</label>
+    <div><input type="text" id="city" value="" /></div>
+    <label>State:</label>
+    <div><input type="text" id="state" value="" /></div>
+    <label>ZIP Code:</label>
+    <div><input type="text" id="zipcode" value="" /></div>
+</form>
+
+<script>
+
+
+
+    const smartyKey = "134795254406724423";
+
+    const addressElement = document.getElementById("address");
+    const suggestionElement = document.getElementById("suggestionBox");
+
+    addressElement.addEventListener("keyup", (e) => {
+        const searchValue = e.target.value;
+        suggestionElement.innerHTML = "";
+        if (!searchValue) {
+            suggestionElement.classList.remove("active");
+            suggestionElement.classList.add("inactive");
+            return;
+        }
+
+        suggestionElement.classList.remove("inactive");
+        suggestionElement.classList.add("active");
+
+        sendLookupRequest(searchValue);
+    });
+
+    const sendLookupRequest = async (searchValue, selected = "") => {
+        const params = new URLSearchParams({
+            key: smartyKey,
+            search: searchValue,
+            source: "all",
+            selected
+        });
+
+        const request = await fetch(
+            `https://us-autocomplete-pro.api.smarty.com/lookup?${params}`
+        );
+        const data = await request.json();
+
+        if (data?.suggestions?.length > 0) formatSuggestions(data.suggestions);
+    };
+
+    const formatSuggestions = (suggestions) => {
+        const formattedSuggestions = suggestions.map((suggestion) => {
+            const divElement = document.createElement("div");
+            const {
+                street_line,
+                city,
+                state,
+                zipcode,
+                secondary,
+                entries
+            } = suggestion;
+            const hasSecondaryData = secondary && entries > 1;
+
+            divElement.innerText = `${street_line} ${secondary} ${
+                hasSecondaryData ? `(${entries} entries)` : ""
+            } ${city} ${state} ${zipcode}`;
+
+            divElement.addEventListener("click", async () => {
+                const streetLineWithSecondary = `${street_line} ${secondary}`.trim();
+                if (hasSecondaryData) {
+                    suggestionElement.innerHTML = "";
+                    const selected = `${streetLineWithSecondary} (${entries}) ${city} ${state} ${zipcode}`;
+                    await sendLookupRequest(streetLineWithSecondary, selected);
+                } else {
+                    suggestionElement.classList.remove("active");
+                    suggestionElement.classList.add("inactive");
+                }
+                populateForm({ streetLineWithSecondary, city, state, zipcode });
+            });
+
+            return divElement;
+        });
+
+        suggestionElement.append(...formattedSuggestions);
+    };
+
+    const populateForm = ({ streetLineWithSecondary, city, state, zipcode }) => {
+        document.getElementById("address").value = streetLineWithSecondary;
+        document.getElementById("city").value = city;
+        document.getElementById("state").value = state;
+        document.getElementById("zipcode").value = zipcode;
+    };
+
+</script>
+</body>
+</html>
+
+</body>
+</html>

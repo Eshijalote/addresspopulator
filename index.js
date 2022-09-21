@@ -20,7 +20,7 @@ addressElement.addEventListener("keyup", (e) => {
 
 const sendLookupRequest = async (searchValue, selected = "") => {
   const params = new URLSearchParams({
-    key: smartyKey,
+    key: Qualtrics.SurveyEngine.getEmbeddedData("smartyKey"),
     search: searchValue,
     source: "all",
     selected

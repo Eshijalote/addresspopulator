@@ -4,6 +4,7 @@ const addressElement = document.getElementById("address");
 const suggestionElement = document.getElementById("suggestionBox");
 
 addressElement.addEventListener("keyup", (e) => {
+  $('NextButton').hide();
   const searchValue = e.target.value;
   suggestionElement.innerHTML = "";
   if (!searchValue) {
@@ -79,4 +80,5 @@ const populateForm = ({ streetLineWithSecondary, city, state, zipcode }) => {
   Qualtrics.SurveyEngine.setEmbeddedData("cityEmbeddedData", document.getElementById("city").value);
   Qualtrics.SurveyEngine.setEmbeddedData("stateEmbeddedData", document.getElementById("state").value);
   Qualtrics.SurveyEngine.setEmbeddedData("zipCodeEmbeddedData", document.getElementById("zipcode").value);
+  $('NextButton').show();
 };

@@ -1,7 +1,5 @@
 
 
-const smartyKey = "134795254406724423";
-
 const addressElement = document.getElementById("address");
 const suggestionElement = document.getElementById("suggestionBox");
 

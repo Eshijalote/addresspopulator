@@ -1,4 +1,5 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet" /><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script>
+
+<script>
 
  /** IE doesn't support Promises in ES5', bluebird alternative script can handle it */
     if (navigator.appName == 'Microsoft Internet Explorer' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv 11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1)) {
@@ -257,8 +258,7 @@
             }, e
         }()
     }();
-</script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet" /><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script>
+
     function makeReconnectingWebSocket(path) {
         // https://github.com/pladaria/reconnecting-websocket/issues/91#issuecomment-431244323
         var ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
@@ -317,8 +317,7 @@
 
     })();
 
-</script>
-<link href="https://cdn.jsdelivr.net/npm/nouislider@15.6.1/dist/nouislider.css" rel="stylesheet" type="text/css" /><script>
+
         var liveSocket;
 
         var $currentScript = $('#otree-live');
@@ -348,4 +347,4 @@
             });
         });
 
-    </script><script src="https://cdn.jsdelivr.net/npm/nouislider@14.7.0/distribute/nouislider.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mathjs@10.0.2/lib/browser/math.min.js"></script><script src="https://code.highcharts.com/9.3.2/highcharts.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/9.3.2/modules/draggable-points.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </script>

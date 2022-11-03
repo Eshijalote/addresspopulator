@@ -513,30 +513,28 @@ var chartoptions = {
 
 
             tickPositions: tickPositions(),
-          
-
+          labels: {
+                useHTML:true,
                 formatter: function() {
-                  
-                  var categoryText = {
+			
+			var categoryText = {
         '-30': 'more than 40% over the next year',
         '-12.5': 'between 30% and 40% over the next year',
         '5': 'between -10% and 30% over the next year',
         '22.5': 'between -30% and -10% over the next year',
         '40' : 'less than -30% over the next year'
-    };
-                    let tick = min_tick + this.value * (nb_bins - 1) * step_tick;
-                        if (tick >= 1000) {
-                            return '<div align="center" style="word-wrap: break-word;width:90px">' + 
-								categoryText[Number((tick / 1000).toFixed(2))] + '</div>';
-                        } else {
-                             return '<div align="center" style="word-wrap: break-word;width:90px">' +
-								categoryText[Number((tick).toFixed(2))] + '</div>';
+    };       
+      let tick = min_tick + this.value * (nb_bins - 1) * step_tick;
+		if (tick >= 1000) {
+		    return '<div align="center" style="word-wrap: break-word;width:90px">' + 
+							categoryText[Number((tick / 1000).toFixed(2))] + '</div>';
+		} else {
+		     return '<div align="center" style="word-wrap: break-word;width:90px">' +
+							categoryText[Number((tick).toFixed(2))] + '</div>';
 
-                        }
+		}
                     
-                },
-
-
+       },
 
                 style: {
                     fontSize: '9px'

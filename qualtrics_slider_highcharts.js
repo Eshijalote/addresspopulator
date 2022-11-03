@@ -64,6 +64,7 @@ let categories = {};
 		     
                             
      }
+alert(categories);
 
 let score = 0;
 

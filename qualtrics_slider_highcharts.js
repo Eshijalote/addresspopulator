@@ -541,10 +541,10 @@ var chartoptions = {
                 formatter: function() {
                     let tick = min_tick + this.value * (nb_bins - 1) * step_tick;
                         if (tick >= 1000) {
-                             return '<div align="center" style="word-wrap: break-word;width:50px">' + 
+                             return '<div align="center" style="word-wrap: break-word;width:60px">' + 
 								categories[Number((this.value).toFixed(2))] + '</div>';
                         } else {
-                           return '<div align="center" style="word-wrap: break-word;width:50px">' +
+                           return '<div align="center" style="word-wrap: break-word;width:60px">' +
 								categories[Number((this.value).toFixed(2))] + '</div>';
 
                         }

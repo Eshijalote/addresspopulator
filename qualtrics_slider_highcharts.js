@@ -3,6 +3,7 @@ let params = document.getElementById('draw').dataset;
 let js_vars = {
     nb_bins: Number(params.n_bins),
     min: Number(params.min),
+    max: Number(params.max),
     step: Number(params.step),
 		xAxisTitle: params.x_axis_title,
 		yAxisTitle: params.y_axis_title,
@@ -44,14 +45,14 @@ let bins = [];
 
 let categories = {};
                        
-    let labelStep = (parseFloat("${q://QID72/ChoiceTextEntryValue/5}") - js_vars.min) / ( js_vars.nb_bins);
+    let labelStep = (js_vars.max - js_vars.min) / ( js_vars.nb_bins);
     let labelMin = Math.round( js_vars.min*100)/100;
 	var key = 0 ;
 	var keyRound = 0;
 	
 	var keyRoundStep = (1/(js_vars.nb_bins-1));
   
-    while(labelMin < parseFloat("${q://QID72/ChoiceTextEntryValue/5}")){
+    while(labelMin < js_vars.max){
 
              let labelText = 'Between ' + Math.round((labelMin)*10)/10 + '% and ' + Math.round((labelMin+labelStep)*10)/10 + '%';
              categories[key]= labelText;
@@ -64,7 +65,7 @@ let categories = {};
 		     
                             
      }
-alert(categories);
+
 
 let score = 0;
 

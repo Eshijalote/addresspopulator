@@ -526,10 +526,10 @@ var chartoptions = {
     };       
       let tick = min_tick + this.value * (nb_bins - 1) * step_tick;
 		if (tick >= 1000) {
-		    return '<div align="center" style="word-wrap: break-word;width:90px">' + 
+		    return '<div align="center" style="word-wrap: break-word;width:70px">' + 
 							categoryText[Number((tick / 1000).toFixed(2))] + '</div>';
 		} else {
-		     return '<div align="center" style="word-wrap: break-word;width:90px">' +
+		     return '<div align="center" style="word-wrap: break-word;width:70px">' +
 							categoryText[Number((tick).toFixed(2))] + '</div>';
 
 		}
@@ -537,7 +537,10 @@ var chartoptions = {
        },
 
                 style: {
-                    fontSize: '9px'
+                    
+                    fontSize: '12px',
+					whiteSpace:'normal'
+               
                 },
                 y: 30,
             },

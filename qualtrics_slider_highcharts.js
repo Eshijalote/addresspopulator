@@ -231,7 +231,7 @@ function save() {
     if (saved.length > 0) {
         $('#undo').prop("disabled", false);
         $('#reset').prop("disabled", false);
-	    $('#SubmitDistribution').prop("disabled", false);
+	$('#SubmitDistribution').css('display','inline-block');
 
     }
 
@@ -554,9 +554,11 @@ var chartoptions = {
 
 
                 style: {
-                    fontSize: '9px'
+                    fontSize: '12px',
+					whiteSpace:'normal',
+	
                 },
-                y: 30,
+               
             },
             min: min,
             max: max,

@@ -517,11 +517,11 @@ var chartoptions = {
                 formatter: function() {
 			
 			var categoryText = {
-        '-30': 'more than 40% over the next year',
-        '-12.5': 'between 30% and 40% over the next year',
+        '-30': 'less than -30% over the next year',
+        '-12.5': 'between -30% and -10% over the next year',
         '5': 'between -10% and 30% over the next year',
-        '22.5': 'between -30% and -10% over the next year',
-        '40' : 'less than -30% over the next year'
+        '22.5': 'between 30% and 40% over the next year',
+        '40' : 'more than 40% over the next year'
     };       
       let tick = min_tick + this.value * (nb_bins - 1) * step_tick;
 		if (tick >= 1000) {

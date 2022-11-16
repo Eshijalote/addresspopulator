@@ -1,4 +1,9 @@
-let params = document.getElementById('draw').dataset;
+var loaded = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            let params = document.getElementById('draw').dataset;
 
 let js_vars = {
     nb_bins: Number(params.n_bins),
@@ -861,3 +866,11 @@ $(document).ready(function() {
 
 
 });
+        }
+    };
+})();
+
+loaded(); 
+
+
+
